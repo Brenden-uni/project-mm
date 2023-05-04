@@ -1,9 +1,16 @@
-root {
-margin: 0;
-padding: 0;
-border: 0;
+div {
+    margin: 2rem;
 }
 
-#navElements {
-list-style: none;
+#citiesEl{
+    display:list-item;
 }
+
+#selectCity{
+    color: black;
+}
+
+#main{
+margin: 0;
+}
+

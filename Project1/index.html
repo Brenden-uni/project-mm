@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense Tracker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href=".\Project1\Assets\style.css">
+    <link rel="stylesheet" href=".\Assets\style.css">
+
 </head>
 
 <body>
@@ -16,31 +17,56 @@
             <a class="brand-logo">Expense Manager</a>
         </div>
     </nav>
+    
 
-    <main class="container">
-        
+    <main id='main' class="container">
+            <div>
+                <p>Name:</p><input type="text" id="nameInputEl">
+            </div>
+
+            <div>
+
+                <label for="citiesEl">Choose a city:</label>
+                
+                <select name="cities" id="citiesEl"></select>
+                
+            </div> 
+                
+            <div>
+                
+                <p>Income:</p>
+                <input type="number" id="incomeInputEl">
+            </div>
+            
+            <div>
+                <p>Budget:</p><input type="number" id="budgetInputEl">
+            </div>
+
+            <div>
+                <input type="submit" value="Submit" id="submitButtonEl">
+            </div>
+
+
+            <section class="container">
+                <div class="col s6">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="images/sample-1.jpg">
+                                <span class="card-title">World Map</span>
+                            </div>
+                            <div class="card-content">
+                                <p>I am a very simple card. I am good at containing small bits of information.
+                                    I am convenient because I require little markup to use effectively.</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#">This is a link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
     </main>
 
+    <script type="text/javascript" src=".\Assets\script.js"></script>
 </body>
-
-</html><section>
-    <p>Name:</p><input type=Name>
-
-    <form name="form1" id="form1" action="/action_page.php">
-        City <select name="subject" id="subject">
-          <option value="" selected="selected">Select subject</option>
-        </select>
-    </form>
-    
-    <p>Income:</p><input type=Income>
-    
-    <p>Budget:</p><input type=Budget>
-    
-    <br><br>
-    <input type="submit" value="Submit">
-
-</section>
-
-<section>
-
-</section>
