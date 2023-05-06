@@ -11,30 +11,16 @@
     </header>
     <main>
         <div class="container-n" id="container-n" style="display: flex;">
-        <div class="container-1">
-        <!-- <img src="/image/money1.jpg" alt="main image" class="money"> -->
-        <p><b>"Do not save what is left after spending, but spend what is left after saving."</b></p>
-    </div>
-        <div class="container-2">
+            <div class="container-1">
+             <!-- <img src="/image/money1.jpg" alt="main image" class="money"> -->
+            <p><b>"Do not save what is left after spending, but spend what is left after saving."</b></p>
+            </div>
+            <div class="container-2">
             <button id="create-btn">Create Profile</button>
-            <button id="select-btn">
-                Select Profile
-                <ul>
-                    <li><a href="#">Option 1</a></li>
-                    <li><a href="#">Option 2</a></li>
-                    <li><a href="#">Option 3</a></li>
-                </ul>
-            </button>
-            <button id="select-btn">
-              Edit Profile
-              <ul>
-                  <li><a href="#">Option 1</a></li>
-                  <li><a href="#">Option 2</a></li>
-                  <li><a href="#">Option 3</a></li>
-              </ul>
-          </button>
-      </div>
-    </div>
+            <button id="profile-btn">Profiles list</button>
+            </div>
+        </div>
+
       <div class="container-3" id="container-3" style="display: none;">
         <form>
           <label for="nameInputEl">Name:</label>
@@ -52,7 +38,7 @@
         </form>
       </div>
 
-      <main id="container-4" style="display: none";>
+      <div id="container-4" style="display: none;">
         <section id="welcome">
             <p id="welcome-msg">Welcome <span>name</span>, your remaining budget is <span> money</span></p>
         </section>
@@ -112,10 +98,45 @@
                 </li>
             </ul>
         </section>
+      </div>
 
+        <div id="container-5" style="display: none;">
+            <h2>Profile List</h2>
+            <table>
+                <head>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </head>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>
+                            <button class="select">Select</button>
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>
+                            <button class="select">Select</button>
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bob Johnson</td>
+                        <td>
+                            <button class="select">Select</button>
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+            </table>
+                   </div>
     </main>
     <footer>
-        <p>&copy; 2023 Expenses Manager</p>
+        <p>&copy; 2023 Expenses Manager. All rights reserved.</p>
     </footer>
     <script src="https://restcountries.com/v2/all"></script>
     <script src="/Project1/Assets/script.js"></script>

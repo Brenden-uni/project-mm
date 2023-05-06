@@ -9,14 +9,19 @@ const citiesEl = document.getElementById('country');
           citiesEl.appendChild(optionEl);
         });
       });
-    const createButton = document.getElementById('create-btn');
-    const containerMain = document.getElementById('container-n');
-    const containerForm = document.getElementById('container-3');
-    createButton.addEventListener('click', function() {
-      containerMain.style.display = 'none';
-      containerForm.style.display = 'block';
-    });
-
+      const createButton = document.getElementById('create-btn');
+      const containerMain = document.getElementById('container-n');
+      const containerForm = document.getElementById('container-3');
+      createButton.addEventListener('click', function() {
+        containerMain.style.display = 'none';
+        containerForm.style.display = 'block';
+      });
+      const profileButton = document.getElementById('profile-btn');
+      const containerProfile = document.getElementById('container-5');
+      profileButton.addEventListener('click', function() {
+        containerMain.style.display = 'none';
+        containerProfile.style.display = 'block';
+      });      
     const submitButtonEl = document.getElementById('submitButtonEl');
     submitButtonEl.addEventListener('click', function(event) {
       event.preventDefault();
