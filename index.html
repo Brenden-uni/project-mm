@@ -1,59 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href=".\Project1\Assets\style.css">
+    <title>Expenses Manager</title>
+    <link rel="stylesheet" type="text/css" href="/Project1/Assets/style.css">
 </head>
-
 <body>
-    <nav>
-        <div class="nav-wrapper center-align">
-            <a class="brand-logo">Expense Manager</a>
-        </div>
-    </nav>
-
-    <main> 
-       <div class=" container row center-align" style="margin: 150px 200px; ">
-       
-            <a class="waves-effect waves-light btn col s6">Select profile</a>
-            <a class="waves-effect waves-light btn col s3">Create new profile</a>
-            <a class="waves-effect waves-light btn col s3">Edit profile</a>
-        
-       </div>
+    <header>
+        <h1 class="navbar">Expenses Manager</h1>
+        <div id="datetime"></div>
+    </header>
+    <main>
+        <div class="container-n" id="container-n" style="display: flex;">
+        <div class="container-1">
+        <!-- <img src="/image/money1.jpg" alt="main image" class="money"> -->
+        <p><b>"Do not save what is left after spending, but spend what is left after saving."</b></p>
     </div>
-    </main>
-
-    <footer class="page-footer">
-        <div class="container">
-          <div class="row">
-            <div class="col l4 s12">
-              <h5 class="white-text">Footer Content</h5>
-              <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">Links</h5>
+        <div class="container-2">
+            <button id="create-btn">Create Profile</button>
+            <button id="select-btn">
+                Select Profile
+                <ul>
+                    <li><a href="#">Option 1</a></li>
+                    <li><a href="#">Option 2</a></li>
+                    <li><a href="#">Option 3</a></li>
+                </ul>
+            </button>
+            <button id="select-btn">
+              Edit Profile
               <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                  <li><a href="#">Option 1</a></li>
+                  <li><a href="#">Option 2</a></li>
+                  <li><a href="#">Option 3</a></li>
               </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer-copyright">
-          <div class="container">
-          © 2014 Copyright Text
-          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-          </div>
-        </div>
-      </footer>
-
+          </button>
+      </div>
+    </div>
+      <div class="container-3" id="container-3" style="display: none;">
+        <form>
+          <label for="nameInputEl">Name:</label>
+          <input class="name" type="text" id="nameInputEl" name="name"><br><br>
+          <label for="incomeInputEl">Income:</label>
+          <input class="income" type="number" id="incomeInputEl" name="income"><br><br>
+          <label for="budgetInputEl">Budget:</label>
+          <input class="budget" type="number" id="budgetInputEl" name="budget"><br><br>
+          <label for="countryEl">Choose your country:</label>
+          <select id="country">
+            <option value=""></option>
+          </select>
+        <br><br>
+          <button class="submit-btn" type="submit" value="Submit" id="submitButtonEl">Submit</button>
+        </form>
+      </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Expenses Manager</p>
+    </footer>
+    <script src="https://restcountries.com/v2/all"></script>
+    <script src="/Project1/Assets/script.js"></script>
 </body>
-
 </html>
