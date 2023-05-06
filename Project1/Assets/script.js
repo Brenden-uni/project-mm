@@ -5,6 +5,8 @@ const incomeInputEl = document.getElementById('incomeInputEl')
 const budgetInputEl = document.getElementById('budgetInputEl')
 const addExpenseBtnEl = document.getElementById('addExpenseBtn')
 const formEl = document.getElementById('formEl')
+const tableEl = document.querySelector('table');
+const tbodyEl = document.querySelector('tbody');
 
 
 // fetch("https://restcountries.com/v3.1/all")
@@ -32,12 +34,10 @@ document.addEventListener('DOMContentLoaded', function () {
 function addTable(e) {
 
   e.preventDefault();
-  const tbodyEl = document.querySelector('tbody');
-  const tableEl = document.querySelector('table');
 
-  const date = document.getElementById('dateEl').value;
-  const category = document.getElementById('categoryEl').value;
-  const amount = document.getElementById('amountEl').value;
+  let date = document.getElementById('dateEl').value;
+  let category = document.getElementById('categoryEl').value;
+  let amount = document.getElementById('amountEl').value;
 
   tbodyEl.innerHTML += `
   <tr>
@@ -64,5 +64,18 @@ function addTable(e) {
 //Add event when user clicks add it will add into table
 
 formEl.addEventListener("submit", addTable)
+
+//Create a function for table row to dynamically add cost of expenses
+
+updateSubtotal();
+
+function updateSubtotal(){
+
+  let subTotalMath = Array.from(tableEl.rows).slice(1).reduce((total, row) => {
+    return total + parseFloat(row.cells[1].innerHTML);
+  }, 0);
+
+  document.getElementById("subtotal").innerHTML = "SubTotal = $" + subTotalMath.toFixed(2);
+}
 
 
