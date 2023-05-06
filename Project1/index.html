@@ -17,56 +17,67 @@
             <a class="brand-logo">Expense Manager</a>
         </div>
     </nav>
-    
 
-    <main id='main' class="container">
+    <main id="container-4">
+
+        <section id="welcome">
+            <p id="welcome-msg">Welcome <span>name</span>, your remaining budget is <span> money</span></p>
+        </section>
+
+        <section id="information">
             <div>
-                <p>Name:</p><input type="text" id="nameInputEl">
+                <h2>In <span>Perth</span></h2>
+                <p>Average Income: $<span>999</span></p>
+                <p>Average Expenses: $<span>999</span></p>
             </div>
+        </section>
 
-            <div>
+        <section id="expenseTable">
 
-                <label for="citiesEl">Choose a city:</label>
-                
-                <select name="cities" id="citiesEl"></select>
-                
-            </div> 
-                
-            <div>
-                
-                <p>Income:</p>
-                <input type="number" id="incomeInputEl">
-            </div>
-            
-            <div>
-                <p>Budget:</p><input type="number" id="budgetInputEl">
-            </div>
+            <table class="centered highlight">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th></th>
+                    </tr>
+                </thead>
 
-            <div>
-                <input type="submit" value="Submit" id="submitButtonEl">
-            </div>
+                <tbody id="tableEl">
+                </tbody>
+            </table>
 
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">Add Expenses</div>
+                    <div class="collapsible-body">
+                        <form id="formEl">
+                            <label>Date</label>
+                            <input type="date" id="dateEl">
 
-            <section class="container">
-                <div class="col s6">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="images/sample-1.jpg">
-                                <span class="card-title">World Map</span>
-                            </div>
-                            <div class="card-content">
-                                <p>I am a very simple card. I am good at containing small bits of information.
-                                    I am convenient because I require little markup to use effectively.</p>
-                            </div>
-                            <div class="card-action">
-                                <a href="#">This is a link</a>
-                            </div>
-                        </div>
+                            <Label>Category</Label>
+                            <input type="text" id="categoryEl">
+
+                            <label>Amount</label>
+                            <input type="number" step='any' id="amountEl">
+
+                            <button type="submit" id="addExpenseBtn">Add</button>
+                        </form>
                     </div>
-                </div>
-            </section>
+                </li>
+            </ul>
+
+        </section>
+
     </main>
+
+    <main>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 
     <script type="text/javascript" src=".\Assets\script.js"></script>
 </body>
