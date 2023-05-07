@@ -18,7 +18,131 @@
         </div>
     </nav>
 
-    <main id="container-4">
+    <main>
+        <div class="container-n" id="container-n" style="display: flex;">
+            <div class="container-1">
+             <!-- <img src="/image/money1.jpg" alt="main image" class="money"> -->
+            <p><b>"Do not save what is left after spending, but spend what is left after saving."</b></p>
+            </div>
+            <div class="container-2">
+            <button id="create-btn">Create Profile</button>
+            <button id="profile-btn">Profiles list</button>
+            </div>
+        </div>
+      <div class="container-3" id="container-3" style="display: none;">
+        <form>
+          <label for="nameInputEl">Name:</label>
+          <input class="name" type="text" id="nameInputEl" name="name"><br><br>
+          <label for="incomeInputEl">Income:</label>
+          <input class="income" type="number" id="incomeInputEl" name="income"><br><br>
+          <label for="budgetInputEl">Budget:</label>
+          <input class="budget" type="number" id="budgetInputEl" name="budget"><br><br>
+          <label for="countryEl">Choose your country:</label>
+          <select id="country">
+            <option value=""></option>
+          </select>
+        <br><br>
+          <button class="submit-btn" type="submit" value="Submit" id="submitButtonEl">Submit</button>
+        </form>
+      </div>
+      <div id="container-4" style="display: none;">
+        <section id="welcome">
+            <p id="welcome-msg">Welcome <span>name</span>, your remaining budget is <span> money</span></p>
+        </section>
+        <section id="information">
+            <div>
+                <h2>In <span>Perth</span></h2>
+                <p>Average Income: $<span>999</span></p>
+                <p>Average Expenses: $<span>999</span></p>
+            </div>
+        </section>
+        <section id="expenseTable">
+            <table class="centered highlight">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alvin</td>
+                        <td>Eclair</td>
+                        <td>$0.87</td>
+                        <td><button class="editbtn">edit</button></td>
+                        <td><button class="editbtn">remove</button></td>
+                    </tr>
+                    <tr>
+                        <td>Alan</td>
+                        <td>Jellybean</td>
+                        <td>$3.76</td>
+                        <td><button class="editbtn">edit</button></td>
+                        <td><button class="editbtn">remove</button></td>
+                    </tr>
+                    <tr>
+                        <td>Jonathan</td>
+                        <td>Lollipop</td>
+                        <td>$7.00</td>
+                        <td><button class="editbtn">edit</button></td>
+                        <td><button class="editbtn">remove</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">Add Expenses</div>
+                    <div class="collapsible-body">
+                        <label>Date</label>
+                        <input type="date">
+                        <Label>Category</Label>
+                        <input type="text">
+                        <label>Amount</label>
+                        <input type="number">
+                        <button>Add</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+      </div>
+        <div id="container-5" style="display: none;">
+            <h2>Profile List</h2>
+            <table>
+                <head>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </head>
+                    <tr>
+                        <td>Profile 1</td>
+                        <td>
+                            <button class="select">Select</button>
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Profile 2 </td>
+                        <td>
+                            <button class="select">Select</button>
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Profile 3 </td>
+                        <td>
+                            <button class="select">Select</button>
+                            <button class="edit">Edit</button>
+                            <button class="delete">Delete</button>
+                        </td>
+                    </tr>
+            </table>
+                   </div>
+    </main>
+
+    <main id="container-6">
 
         <section id="welcome">
             <p id="welcome-msg">Welcome <span>name</span>, your remaining budget is <span> money</span></p>
@@ -77,9 +201,7 @@
 
     </main>
 
-    <main>
 
-    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
