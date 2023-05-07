@@ -33,7 +33,6 @@ nav ul li a {
   flex-basis: 40%;
   text-align: center;
 }
-
 /* CSS code for Expenses Manager app */
 /* Header */
 header {
@@ -158,4 +157,14 @@ input,
 }
 button.delete:hover{
   background-color: rgb(100, 22, 22);
+}
+.main-link,
+.main-link:hover{
+  background: none;
+  border: none;
+  font-size: 28px;
+  font-weight: 300;
+  font-family:sans-serif;
+  justify-content: center;
+  margin-top: -15px;
 }

@@ -6,7 +6,7 @@
 </head>
 <body>
     <header>
-        <h1 class="navbar">Expenses Manager</h1>
+            <button class="main-link" id="main-link"><p>Expenses Manager</p></Expenses></button>
         <div id="datetime"></div>
     </header>
     <main>
@@ -20,7 +20,6 @@
             <button id="profile-btn">Profiles list</button>
             </div>
         </div>
-
       <div class="container-3" id="container-3" style="display: none;">
         <form>
           <label for="nameInputEl">Name:</label>
@@ -37,7 +36,6 @@
           <button class="submit-btn" type="submit" value="Submit" id="submitButtonEl">Submit</button>
         </form>
       </div>
-
       <div id="container-4" style="display: none;">
         <section id="welcome">
             <p id="welcome-msg">Welcome <span>name</span>, your remaining budget is <span> money</span></p>
@@ -99,7 +97,6 @@
             </ul>
         </section>
       </div>
-
         <div id="container-5" style="display: none;">
             <h2>Profile List</h2>
             <table>
@@ -109,7 +106,7 @@
                     </tr>
                 </head>
                     <tr>
-                        <td>John Doe</td>
+                        <td>Profile 1</td>
                         <td>
                             <button class="select">Select</button>
                             <button class="edit">Edit</button>
@@ -117,7 +114,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Jane Smith</td>
+                        <td>Profile 2 </td>
                         <td>
                             <button class="select">Select</button>
                             <button class="edit">Edit</button>
@@ -125,7 +122,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Bob Johnson</td>
+                        <td>Profile 3 </td>
                         <td>
                             <button class="select">Select</button>
                             <button class="edit">Edit</button>
@@ -139,6 +136,7 @@
         <p>&copy; 2023 Expenses Manager. All rights reserved.</p>
     </footer>
     <script src="https://restcountries.com/v2/all"></script>
+    <script src="https://timezoneapi.io/api/timezone/?apikey=${aWwymuIZdzpBFAcEvmrJ}&zone=${country}"></script>
     <script src="/Project1/Assets/script.js"></script>
 </body>
 </html>
