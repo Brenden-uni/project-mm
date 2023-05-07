@@ -7,24 +7,12 @@ const addExpenseBtnEl = document.getElementById('addExpenseBtn')
 const formEl = document.getElementById('formEl')
 const tableEl = document.querySelector('table');
 const tbodyEl = document.querySelector('tbody');
+const subtotalEl = document.getElementById("subtotal");
 
-
-// fetch("https://restcountries.com/v3.1/all")
-//   .then(res => {
-//     return res.json();
-//   })
-//   .then(data =>{
-//     data.forEach(country =>{
-//       const markup = `<option>${country.name.official}</option>`;
-//       citiesEl.insertAdjacentHTML('beforeend', markup)
-//     });
-//     console.log(data)
-//   })
-//   .catch(error=> console.log (error));
 
 document.addEventListener('DOMContentLoaded', function () {
-  var elems = document.querySelectorAll('.collapsible');
-  var instances = M.Collapsible.init(elems, {
+  let elems = document.querySelectorAll('.collapsible');
+  let instances = M.Collapsible.init(elems, {
     accordion: true
   });
 });
@@ -43,39 +31,47 @@ function addTable(e) {
   <tr>
       <td>${date}</td>
       <td>${category}</td>
-      <td>$${amount}</td>
+      <td>${amount}</td>
       <td><button class="removeBtn">remove</button></td>
   </tr>
   `;
 
-  function deleteRow(e){
-    if (!e.target.classList.contains('removeBtn')){
+  function deleteRow(e) {
+    if (!e.target.classList.contains('removeBtn')) {
       return
     }
-    
+
     const btn = e.target;
     btn.closest('tr').remove();
+    calculateSubtotal()
 
   }
-
+  
   tableEl.addEventListener('click', deleteRow);
+
+  calculateSubtotal()
+
 }
 
 //Add event when user clicks add it will add into table
 
 formEl.addEventListener("submit", addTable)
 
-//Create a function for table row to dynamically add cost of expenses
+//Create a function for table row to dynamically add cost of expenses 
 
-updateSubtotal();
+function calculateSubtotal() {
+  let subtotal = 0;
+  let tableRows = document.querySelectorAll("#tableEl tr");
 
-function updateSubtotal(){
+  for (let i = 0; i < tableRows.length; i++) {
+    let amountCell = tableRows[i].querySelectorAll("td")[2];
+    let amount = parseFloat(amountCell.textContent);
+    subtotal += amount;
+  }
 
-  let subTotalMath = Array.from(tableEl.rows).slice(1).reduce((total, row) => {
-    return total + parseFloat(row.cells[1].innerHTML);
-  }, 0);
-
-  document.getElementById("subtotal").innerHTML = "SubTotal = $" + subTotalMath.toFixed(2);
+  let subtotalSpan = document.getElementById("subtotalSpan");
+  subtotalSpan.textContent = "Subtotal: $" + subtotal.toFixed(2);
 }
+
 
 
