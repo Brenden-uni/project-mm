@@ -36,101 +36,66 @@
           <button class="submit-btn" type="submit" value="Submit" id="submitButtonEl">Submit</button>
         </form>
       </div>
+
       <div id="container-4" style="display: none;">
         <section id="welcome">
             <p id="welcome-msg">Welcome <span>name</span>, your remaining budget is <span> money</span></p>
         </section>
-        <section id="information">
-            <div>
-                <h2>In <span>Perth</span></h2>
-                <p>Average Income: $<span>999</span></p>
-                <p>Average Expenses: $<span>999</span></p>
-            </div>
-        </section>
-        <section id="expenseTable">
-            <table class="centered highlight">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Category</th>
-                        <th>Amount</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Alvin</td>
-                        <td>Eclair</td>
-                        <td>$0.87</td>
-                        <td><button class="editbtn">edit</button></td>
-                        <td><button class="editbtn">remove</button></td>
-                    </tr>
-                    <tr>
-                        <td>Alan</td>
-                        <td>Jellybean</td>
-                        <td>$3.76</td>
-                        <td><button class="editbtn">edit</button></td>
-                        <td><button class="editbtn">remove</button></td>
-                    </tr>
-                    <tr>
-                        <td>Jonathan</td>
-                        <td>Lollipop</td>
-                        <td>$7.00</td>
-                        <td><button class="editbtn">edit</button></td>
-                        <td><button class="editbtn">remove</button></td>
-                    </tr>
-                </tbody>
-            </table>
-            <ul class="collapsible">
-                <li>
-                    <div class="collapsible-header">Add Expenses</div>
-                    <div class="collapsible-body">
-                        <label>Date</label>
-                        <input type="date">
-                        <Label>Category</Label>
-                        <input type="text">
-                        <label>Amount</label>
-                        <input type="number">
-                        <button>Add</button>
-                    </div>
-                </li>
-            </ul>
-        </section>
-      </div>
-        <div id="container-5" style="display: none;">
-            <h2>Profile List</h2>
-            <table>
-                <head>
-                    <tr>
-                        <th>Name</th>
-                    </tr>
-                </head>
-                    <tr>
-                        <td>Profile 1</td>
-                        <td>
-                            <button class="select">Select</button>
-                            <button class="edit">Edit</button>
-                            <button class="delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Profile 2 </td>
-                        <td>
-                            <button class="select">Select</button>
-                            <button class="edit">Edit</button>
-                            <button class="delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Profile 3 </td>
-                        <td>
-                            <button class="select">Select</button>
-                            <button class="edit">Edit</button>
-                            <button class="delete">Delete</button>
-                        </td>
-                    </tr>
-            </table>
-                   </div>
+        <section id="information"></section>
+
+            <section id="expenseTable">
+                <table class="centered highlight">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <br>
+                            <th>Category</th>
+                            <br>
+                            <th>Amount</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tableEl">
+                    </tbody>
+
+                </table>
+
+                <span id=subtotalSpan></span>
+
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header">Add Expenses</div>
+                        <div class="collapsible-body">
+                            <form id="formEl">
+                                <label>Date</label>
+                                <input type="date" id="dateEl">
+
+                                <Label>Category</Label>
+                                <input type="text" id="categoryEl">
+
+                                <label>Amount</label>
+                                <input type="number" step='any' id="amountEl">
+
+                                <button type="submit" id="addExpenseBtn">Add</button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+    </div>
+      <div id="container-5" style="display: none;">
+        <h2>Profile List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody id="profiles-list">
+            </tbody>
+        </table>
+    </div>
     </main>
     <footer>
         <p>&copy; 2023 Expenses Manager. All rights reserved.</p>
