@@ -98,6 +98,10 @@ submitButtonEl.addEventListener('click', function (event) {
             <p>Average Expenses: $999</p>
         </div>`;
 });
+  const mainLink = document.getElementById('main-link');
+  mainLink.addEventListener('click', () => {
+    location.reload();
+});
 
 const nameInputEl = document.getElementById('nameInputEl')
 const incomeInputEl = document.getElementById('incomeInputEl')
@@ -251,7 +255,3 @@ const navbar = document.querySelector('nav');
 // Get the name of the selected country from the profile form
 const country = document.getElementById('country').value;
 
-const mainLink = document.getElementById('main-link');
-mainLink.addEventListener('click', () => {
-  location.reload();
-});
