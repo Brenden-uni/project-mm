@@ -15,10 +15,18 @@
     <nav>
         <div class="nav-wrapper center-align">
             <a class="brand-logo">Expense Manager</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="#" id="logout-btn">Back/Logout</a></li>
+            </ul>
+            <div class="left" id="country-time">
+                <!-- Your code for displaying country time here -->
+                <span id="dateTimeEl"></span>
+              </div>
         </div>
     </nav>
 
     <main>
+
         <div class="container-n" id="container-n" style="display: flex;">
             <div class="container-1">
                 <!-- <img src="/image/money1.jpg" alt="main image" class="money"> -->
@@ -52,91 +60,73 @@
                 <p id="welcome-msg">Welcome <span>name</span>, your remaining budget is <span> money</span></p>
             </section>
             <section id="information">
+
                 <div>
                     <h2>In <span>Perth</span></h2>
                     <p>Average Income: $<span>999</span></p>
                     <p>Average Expenses: $<span>999</span></p>
                 </div>
-            </section>
 
-            <section id="expenseTable">
-table class="centered highlight">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Category</th>
-                            <th>Amount</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+                <section id="expenseTable">
+                    <table class="centered highlight">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th></th>
+                            </tr>
+                        </thead>
 
-                    <tbody id="tableEl">
-                    </tbody>
-                </table>
+                        <tbody id="tableEl">
+                        </tbody>
 
-                <span id=subtotalSpan></span>
+                    </table>
 
-                <ul class="collapsible">
-                    <li>
-                        <div class="collapsible-header">Add Expenses</div>
-                        <div class="collapsible-body">
-                            <form id="formEl">
-                                <label>Date</label>
-                                <input type="date" id="dateEl">
+                    <span id=subtotalSpan></span>
 
-                                <Label>Category</Label>
-                                <input type="text" id="categoryEl">
+                    <ul class="collapsible">
+                        <li>
+                            <div class="collapsible-header">Add Expenses</div>
+                            <div class="collapsible-body">
+                                <form id="formEl">
+                                    <label>Date</label>
+                                    <input type="date" id="dateEl">
 
-                                <label>Amount</label>
-                                <input type="number" step='any' id="amountEl">
+                                    <Label>Category</Label>
+                                    <input type="text" id="categoryEl">
 
-                                <button type="submit" id="addExpenseBtn">Add</button>
-                            </form>
-                        </div>
-                    </li>
-                </ul>
-            </section>
+                                    <label>Amount</label>
+                                    <input type="number" step='any' id="amountEl">
+
+                                    <button type="submit" id="addExpenseBtn">Add</button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+        </div>
 
     </main>
-    </div>
+
 
     <div id="container-5" style="display: none;">
         <h2>Profile List</h2>
         <table>
-            <head>
+            <thead>
                 <tr>
                     <th>Name</th>
                 </tr>
-            </head>
-            <tr>
-                <td>Profile 1</td>
-                <td>
-                    <button class="select">Select</button>
-                    <button class="edit">Edit</button>
-                    <button class="delete">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Profile 2 </td>
-                <td>
-                    <button class="select">Select</button>
-                    <button class="edit">Edit</button>
-                    <button class="delete">Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Profile 3 </td>
-                <td>
-                    <button class="select">Select</button>
-                    <button class="edit">Edit</button>
-                    <button class="delete">Delete</button>
-                </td>
-            </tr>
+            </thead>
+            <tbody id="profiles-list">
+            </tbody>
         </table>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
     <script type="text/javascript" src=".\Assets\script.js"></script>
+
+    
+
 </body>
+</html>
