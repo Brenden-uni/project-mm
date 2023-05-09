@@ -52,6 +52,8 @@ mainLink.addEventListener('click', () => {
 });
 
 
+
+
 const createButton = document.getElementById('create-btn');
 const containerMain = document.getElementById('container-n');
 const containerForm = document.getElementById('container-3');
@@ -109,6 +111,7 @@ submitButton.addEventListener('click', function (event) {
       console.error('Error retrieving time and date:', error);
       alert('Error retrieving time and date. Please try again later.');
     });
+>>>>>>> b1352b454e84e065a6420470765d14b36a913970
 });
 
 const nameInputEl = document.getElementById('nameInputEl');
@@ -121,6 +124,7 @@ const tbodyEl = document.querySelector('tbody');
 const subtotalEl = document.getElementById("subtotal");
 const countryEl = document.getElementById('country')
 
+>>>>>>> b1352b454e84e065a6420470765d14b36a913970
 // Create Function to add user input to a table
 
 function addTable(e) {
@@ -218,8 +222,16 @@ function calculateSubtotal() {
     subtotal += amount;
   }
 
-  let subtotalSpan = document.getElementById("subtotalSpan");
-  subtotalSpan.textContent = "Subtotal: " + subtotal.toFixed(2);
+  let budgetJson = localStorage.getItem('formData');
+  let budgetData = JSON.parse(budgetJson);
+  let budget = parseFloat(budgetData.budget);
+  let remainingBudget = budget - subtotal;
+
+  let remainingBudgetEl = document.getElementById("remainingBudget");
+  remainingBudgetEl.textContent = "Your remaining budget is " + remainingBudget.toFixed(2);
+
+  let subtotalEl = document.getElementById("subtotal");
+  subtotalEl.textContent = "Subtotal: " + subtotal.toFixed(2);
 }
 
 // get the required elements
@@ -265,9 +277,8 @@ submitButtonEl.addEventListener("click", (event) => {
   document.getElementById("container-n").style.display = "none";
 
 });
-
 // handle profile button click
-profileBtn.addEventListener("click", () => {
+profileButton.addEventListener("click", () => {
   // hide the main screen and show the profile list screen
   document.getElementById("container-n").style.display = "none";
   document.getElementById("container-5").style.display = "block";
