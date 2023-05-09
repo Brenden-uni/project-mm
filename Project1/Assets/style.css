@@ -5,6 +5,7 @@ body {
   background: #B2B5E0;
   color: black;
 }
+
 nav ul {
   margin: 0;
   padding: 0;
@@ -12,13 +13,16 @@ nav ul {
   display: flex;
   justify-content: flex-end;
 }
+
 nav ul li {
   margin: 0 10px;
 }
+
 nav ul li a {
   color: #fff;
   text-decoration: none;
 }
+
 .container-1 {
   margin-top: 40px;
   flex-direction: column;
@@ -26,13 +30,15 @@ nav ul li a {
   flex-basis: 40%;
   text-align: center;
 }
+
 .container-2 {
   flex-direction: column;
-  align-items:flex-end;
+  align-items: flex-end;
   margin-right: 120px;
   flex-basis: 40%;
   text-align: center;
 }
+
 /* CSS code for Expenses Manager app */
 /* Header */
 header {
@@ -43,9 +49,11 @@ header {
   padding: 10px;
   height: 80px;
 }
-header.p{
+
+header.p {
   justify-content: end;
 }
+
 /* Main section */
 main {
   display: flex;
@@ -54,14 +62,17 @@ main {
   flex-wrap: wrap;
   padding: 20px;
 }
+
 .money {
   width: 100%;
   height: auto;
   border: solid 2px #C5ADC5;
 }
+
 .money:hover {
   background-color: #7C907D;
 }
+
 button {
   background-color: lightblue;
   color: white;
@@ -73,32 +84,39 @@ button {
   width: 320px;
   border: solid 2px #C5ADC5;
 }
+
 button:hover {
   background-color: #7C907D;
 }
+
 /* Dropdown button */
 .dropdown {
   position: relative;
   display: inline-block;
 }
+
 .dropdown-content {
   display: none;
   position: absolute;
   z-index: 1;
 }
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
 .dropdown-content a {
   color: black;
   padding: 10px 20px;
   text-decoration: none;
   display: block;
 }
+
 .dropdown-content a:hover {
   background-color: #F1F1F1;
 }
-input{
+
+input {
   background-color: #A19696;
   border: solid 2px #C5ADC5;
   width: 320px;
@@ -113,34 +131,42 @@ input{
   border-radius: 5px;
   box-shadow: 2px 2px 5px #888888;
 }
+
 /* Footer */
 footer {
-  display:flex;
+  display: flex;
   background-color: #C5ADC5;
   color: white;
-  text-align:center;
-  position:fixed;
+  text-align: center;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 30px;
   padding: 10px;
 }
+
+.container-3 {
+  background-color: white;
 .container-3 {
   background-color: white;
   padding: 20px;
   margin-bottom: 20px;
-  height:auto;
-  align-items:flex-start;
+  height: auto;
+  align-items: flex-start;
 }
+
+.container-3 label {
 .container-3 label {
   display: flex;
   font-size: 18px;
   margin-bottom: 10px;
 }
+
 input,
 .container-3 input[type="text"],
 .container-3 input[type="number"],
+.container-3 select {
 .container-3 select {
   background-color: #A19696;
   border: solid 2px #C5ADC5;
@@ -156,20 +182,23 @@ input,
   border-radius: 5px;
   box-shadow: 2px 2px 5px #888888;
 }
-button.delete:hover{
+
+button.delete:hover {
   background-color: rgb(100, 22, 22);
 }
+
 .main-link,
-.main-link:hover{
+.main-link:hover {
   background: none;
   border: none;
   font-weight: 300;
-  font-family:sans-serif;
+  font-family: sans-serif;
   justify-content: center;
   margin-top: -15px;
   align-items: center;
   padding: 3px;
 }
+
 #dateandtime {
   font-size: 15px;
   margin: 0;
@@ -177,10 +206,12 @@ button.delete:hover{
   align-items: end;
   justify-content: end;
 }
+
 #main-link h4 {
   padding: 8px;
   font-size: 30px;
   margin: 0;
   justify-content: center;
+  align-items: center;
   align-items: center;
 }  
