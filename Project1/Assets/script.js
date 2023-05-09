@@ -193,82 +193,18 @@ function calculateSubtotal() {
     subtotal += amount;
   }
 
-  let subtotalSpan = document.getElementById("subtotalSpan");
-  subtotalSpan.textContent = "Subtotal: " + subtotal.toFixed(2);
+  let budgetJson = localStorage.getItem('formData');
+  let budgetData = JSON.parse(budgetJson);
+  let budget = parseFloat(budgetData.budget);
+  let remainingBudget = budget - subtotal;
+
+  let remainingBudgetEl = document.getElementById("remainingBudget");
+  remainingBudgetEl.textContent = "Your remaining budget is " + remainingBudget.toFixed(2);
+
+  let subtotalEl = document.getElementById("subtotal");
+  subtotalEl.textContent = "Subtotal: " + subtotal.toFixed(2);
 }
 
-//log out function
-
-document.getElementById('logout-btn').addEventListener('click', () => {
-  localStorage.removeItem('selectedProfile');
-  window.location.href = './index.html';
-});
-
-// get the required elements
-const createBtn = document.getElementById("create-btn");
-const profileBtn = document.getElementById("profile-btn");
-const container3 = document.getElementById("container-3");
-const container4 = document.getElementById("container-4");
-
-// create an empty array to store the profiles
-let profiles1 = [];
-
-// handle submit button click
-submitButtonEl.addEventListener("click", (event) => {
-  // prevent the default form submission behavior
-  event.preventDefault();
-  // get the values entered by the user
-  const name = nameInputEl.value.trim();
-  const income = incomeInputEl.value.trim();
-  const budget = budgetInputEl.value.trim();
-  const country = countryEl.value;
-  // validate the inputs
-  if (!name || !income || !budget || !country) {
-    alert("Please enter all the required fields.");
-    return;
-  }
-  if (isNaN(income) || isNaN(budget)) {
-    alert("Please enter a valid number for income and budget.");
-    return;
-  }
-  // create a new profile object
-  const profiles = {
-    name,
-    income: +income,
-    budget: +budget,
-    country,
-    expenses: []
-  };
-  // add the profile to the array of profiles
-  profiles.push(profiles1);
-  // show the main screen and hide the create profile screen
-  container3.style.display = "none";
-  document.getElementById("container-n").style.display = "flex";
-});
-
-// handle profile button click
-profileBtn.addEventListener("click", () => {
-  // hide the main screen and show the profile list screen
-  document.getElementById("container-n").style.display = "none";
-  document.getElementById("container-5").style.display = "block";
-});
-
-// handle select profile button click
-const selectProfileBtns = document.querySelectorAll(".select");
-selectProfileBtns.forEach((btn, index) => {
-  btn.addEventListener("click", () => {
-    // set the selected profile in local storage
-    localStorage.setItem("selectedProfile", JSON.stringify(profiles[index]));
-    // show the main screen and hide the profile list screen
-    document.getElementById("container-5").style.display = "none";
-    container4.style.display = "block";
-    // display the name and budget of the selected profile
-    document.querySelector("#welcome-msg span").textContent = profiles1[index].name;
-    document.querySelector("#welcome-msg span:last-child").textContent = profiles1[index].budget;
-  });
-});
-
-// Get a reference to the navbar element
 const navbar = document.querySelector('nav');
 
 // Get the name of the selected country from the profile form
