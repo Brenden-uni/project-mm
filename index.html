@@ -2,11 +2,12 @@
 <html>
 <head>
     <title>Expenses Manager</title>
-    <link rel="stylesheet" type="text/css" href="/Project1/Assets/style.css">
+    <link rel="stylesheet" type="text/css" href="/project-mm/Project1/Assets/style.css">
 </head>
 <body>
     <header>
-            <button class="main-link" id="main-link"><p>Expenses Manager</p></Expenses></button>
+            <button class="main-link" id="main-link"><h4>Expenses Manager</h4></Expenses></button>
+            <p id="dateandtime"></p>
     </header>
     <main>
         <div class="container-n" id="container-n" style="display: flex;">
@@ -32,7 +33,7 @@
             <option value=""></option>
           </select>
         <br><br>
-          <button class="submit-btn" type="submit" value="Submit" id="submitButtonEl">Submit</button>
+          <button class="submit-btn" type="button" value="Submit" id="submitButtonEl" onclick="getCountryInfo()">Submit</button>
         </form>
       </div>
 
@@ -40,8 +41,8 @@
         <section id="welcome">
             <p id="welcome-msg">Welcome <span>name</span>, your remaining budget is <span> money</span></p>
         </section>
-        <section id="information"></section>
-
+        <p id="currency"> 
+         </p>
             <section id="expenseTable">
                 <table class="centered highlight">
                     <thead>
@@ -61,7 +62,9 @@
 
                 </table>
 
-                <span id=subtotalSpan></span>
+                <span id=subtotal></span>
+                <br>
+                <span id="remainingBudget"></span>
 
                 <ul class="collapsible">
                     <li>
@@ -84,15 +87,19 @@
                 </ul>
             </section>
     </div>
-      <div id="container-5" style="display: none;">
+    <div id="container-5" style="display: none;">
         <h2>Profile List</h2>
-        <table>
+        <table id="profile-table">
             <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Income</th>
+                    <th>Budget</th>
+                    <th>Country</th>
+                    <th></th>
                 </tr>
             </thead>
-            <tbody id="profiles-list">
+            <tbody>
             </tbody>
         </table>
     </div>
@@ -101,7 +108,6 @@
         <p>&copy; 2023 Expenses Manager. All rights reserved.</p>
     </footer>
     <script src="https://restcountries.com/v2/all"></script>
-    <script src="https://timezoneapi.io/api/timezone/?apikey=${aWwymuIZdzpBFAcEvmrJ}&zone=${country}"></script>
-    <script src="/Project1/Assets/script.js"></script>
+    <script src="/project-mm/Project1/Assets/script.js"></script>
 </body>
 </html>

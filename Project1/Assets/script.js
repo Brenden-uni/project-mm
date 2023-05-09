@@ -1,62 +1,55 @@
-
-const citiesEl = document.getElementById('country');
-const url = 'https://restcountries.com/v2/all';
-fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    data.forEach(country => {
-      const optionEl = document.createElement('option');
-      optionEl.textContent = country.name;
-      citiesEl.appendChild(optionEl);
-    });
-  });
-
-const countryEl = document.getElementById('country');
-const dateEl = document.getElementById('dateEl');
-const timeEl = document.getElementById('timeEl');
-
-countryEl.addEventListener('change', () => {
-  const country = countryEl.value;
-  const url = `https://worldtimeapi.org/api/timezone/${country}`;
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      const datetime = data.datetime;
-      const date = datetime.split('T')[0];
-      const time = datetime.split('T')[1].substring(0, 5);
-      dateEl.value = date;
-      timeEl.value = time;
-    })
-    .catch(error => console.log(error));
-});
-
-function updateTime() {
-  const date = new Date();
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const seconds = date.getSeconds();
-  const formattedTime = `${hours}:${minutes < 10 ? '0' + minutes : minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
-  timeEl.textContent = formattedTime;
+function displayDateTime() {
+  const now = new Date();
+  const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
+  const date = now.toLocaleDateString('en-GB', options);
+  const time = now.toLocaleTimeString();
+  const datetime = `${date} ${time}`;
+  return datetime;
 }
 
-setInterval(updateTime, 1000);
+const datetimeContainer = document.getElementById("dateandtime");
+datetimeContainer.textContent = displayDateTime();
 
-// get the element where you want to display the date and time
-const dateTimeEl = document.getElementById('dateTimeEl');
-
-// set the interval to update the date and time every second
 setInterval(() => {
-  // create a new Date object to get the current date and time
-  const now = new Date();
-  
-  // format the date and time as a string
-  const dateTimeString = now.toLocaleString();
-  
-  // display the date and time on the page
-  dateTimeEl.innerText = dateTimeString;
+  datetimeContainer.textContent = displayDateTime();
 }, 1000);
 
 
+function getCountryInfo() {
+    var country = document.getElementById("country").value;
+    
+    var currencyUrl = "https://restcountries.com/v2/name/" + encodeURI(country) + "?fullText=true";
+    fetch(currencyUrl)
+        .then(response => response.json())
+        .then(data => {
+            var currency = data[0].currencies[0].name;
+            document.getElementById("currency").innerHTML = "Your are from " + country + " and your currency is " +  currency;
+        });
+}
+
+function getCountryList() {
+    var countryListUrl = "https://restcountries.com/v2/all";
+    fetch(countryListUrl)
+        .then(response => response.json())
+        .then(data => {
+            var select = document.getElementById("country");
+            for (var i = 0; i < data.length; i++) {
+                var option = document.createElement("option");
+                option.value = data[i].name;
+                option.text = data[i].name;
+                select.add(option);
+            }
+        });
+}
+
+// Call the getCountryList() function when the page is loaded
+window.onload = getCountryList;
+
+
+const mainLink = document.getElementById('main-link');
+mainLink.addEventListener('click', () => {
+  location.reload();
+});
 
 
 const createButton = document.getElementById('create-btn');
@@ -73,7 +66,6 @@ profileButton.addEventListener('click', function () {
   containerProfile.style.display = 'block';
 });
 const submitButtonEl = document.getElementById('submitButtonEl');
-
 submitButtonEl.addEventListener('click', function (event) {
   event.preventDefault();
   const nameInputEl = document.getElementById('nameInputEl');
@@ -89,20 +81,13 @@ submitButtonEl.addEventListener('click', function (event) {
   const container4El = document.getElementById('container-4');
   container4El.style.display = 'block';
   const welcomeMsgEl = document.getElementById('welcome-msg');
-  welcomeMsgEl.innerHTML = `Welcome <span>${name}</span>, your remaining balance is <span>$${-(income - budget)}</span>`;
+  welcomeMsgEl.innerHTML = `Welcome <span><b>${name}</b></span>, <br> Your income is <span><b>${income}</b></span> <br>Your budget  is <span><b>${budget}</b></span>`;
   const informationEl = document.getElementById('information');
-
-  informationEl.innerHTML = `<div>
-            <h2>In ${country}</h2>
-            <p>Average Income: $999</p>
-            <p>Average Expenses: $999</p>
-        </div>`;
-});
-  const mainLink = document.getElementById('main-link');
-  mainLink.addEventListener('click', () => {
-    location.reload();
 });
 
+// Get the form and submit button elements
+const form = document.querySelector('#container-3 form');
+const submitButton = document.querySelector('#submitButtonEl');
 const nameInputEl = document.getElementById('nameInputEl')
 const incomeInputEl = document.getElementById('incomeInputEl')
 const budgetInputEl = document.getElementById('budgetInputEl')
@@ -111,15 +96,6 @@ const formEl = document.getElementById('formEl')
 const tableEl = document.querySelector('table');
 const tbodyEl = document.querySelector('tbody');
 const subtotalEl = document.getElementById("subtotal");
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  let elems = document.querySelectorAll('.collapsible');
-  let instances = M.Collapsible.init(elems, {
-    accordion: true
-  });
-});
-
 
 
 // Create Function to add user input to a table
@@ -174,27 +150,26 @@ function calculateSubtotal() {
     subtotal += amount;
   }
 
-  let subtotalSpan = document.getElementById("subtotalSpan");
-  subtotalSpan.textContent = "Subtotal: $" + subtotal.toFixed(2);
+  let budgetJson = localStorage.getItem('formData');
+  let budgetData = JSON.parse(budgetJson);
+  let budget = parseFloat(budgetData.budget);
+  let remainingBudget = budget - subtotal;
+
+  let remainingBudgetEl = document.getElementById("remainingBudget");
+  remainingBudgetEl.textContent = "Your remaining budget is " + remainingBudget.toFixed(2);
+
+  let subtotalEl = document.getElementById("subtotal");
+  subtotalEl.textContent = "Subtotal: " + subtotal.toFixed(2);
 }
 
-//log out function
+const navbar = document.querySelector('nav');
 
-document.getElementById('logout-btn').addEventListener('click', () => {
-  localStorage.removeItem('selectedProfile');
-  window.location.href = './index.html';
-});
-
-// get the required elements
-const createBtn = document.getElementById("create-btn");
-const profileBtn = document.getElementById("profile-btn");
-const container3 = document.getElementById("container-3");
-const container4 = document.getElementById("container-4");
+// Get the name of the selected country from the profile form
+const country = document.getElementById('country').value;
 
 // create an empty array to store the profiles
 let profiles1 = [];
-
-// handle submit button click
+// handle form submission
 submitButtonEl.addEventListener("click", (event) => {
   // prevent the default form submission behavior
   event.preventDefault();
@@ -203,55 +178,83 @@ submitButtonEl.addEventListener("click", (event) => {
   const income = incomeInputEl.value.trim();
   const budget = budgetInputEl.value.trim();
   const country = countryEl.value;
-  // validate the inputs
-  if (!name || !income || !budget || !country) {
-    alert("Please enter all the required fields.");
-    return;
-  }
-  if (isNaN(income) || isNaN(budget)) {
-    alert("Please enter a valid number for income and budget.");
-    return;
-  }
   // create a new profile object
   const profiles = {
     name,
     income: +income,
     budget: +budget,
     country,
-    expenses: []
+    expenses: "",
   };
+  console.log(profiles);
+  const profilesLocal = JSON.parse(localStorage.getItem("Profiles")) || [];
   // add the profile to the array of profiles
-  profiles.push(profiles1);
+  profilesLocal.push(profiles);
+  localStorage.setItem("Profiles", JSON.stringify(profilesLocal));
   // show the main screen and hide the create profile screen
-  container3.style.display = "none";
-  document.getElementById("container-n").style.display = "flex";
+  document.getElementById("container-n").style.display = "none";
 });
-
 // handle profile button click
-profileBtn.addEventListener("click", () => {
+profileButton.addEventListener("click", () => {
   // hide the main screen and show the profile list screen
   document.getElementById("container-n").style.display = "none";
   document.getElementById("container-5").style.display = "block";
 });
 
-// handle select profile button click
-const selectProfileBtns = document.querySelectorAll(".select");
-selectProfileBtns.forEach((btn, index) => {
-  btn.addEventListener("click", () => {
-    // set the selected profile in local storage
-    localStorage.setItem("selectedProfile", JSON.stringify(profiles[index]));
-    // show the main screen and hide the profile list screen
-    document.getElementById("container-5").style.display = "none";
-    container4.style.display = "block";
-    // display the name and budget of the selected profile
-    document.querySelector("#welcome-msg span").textContent = profiles1[index].name;
-    document.querySelector("#welcome-msg span:last-child").textContent = profiles1[index].budget;
+//render profile
+const profileTable = document.querySelector("#profile-table");
+const tbody = profileTable.querySelector("tbody");
+let profiles = JSON.parse(localStorage.getItem("Profiles")) || [];
+function renderProfiles() {
+  tbody.innerHTML = "";
+  profiles.forEach((profile, index) => {
+    const tr = document.createElement("tr");
+    const name = document.createElement("td");
+    const income = document.createElement("td");
+    const budget = document.createElement("td");
+    const country = document.createElement("td");
+    const editBtn = document.createElement("button");
+    const selectBtn = document.createElement("button");
+    const deleteBtn = document.createElement("button");
+    const actionsCell = document.createElement("td");
+    name.innerText = profile.name;
+    income.innerText = profile.income;
+    budget.innerText = profile.budget;
+    country.innerText = profile.country;
+    editBtn.innerText = "Edit";
+    editBtn.addEventListener("click", () => {
+      editProfile(index);
+    });
+    selectBtn.innerText = "Select";
+    selectBtn.addEventListener("click", () => {
+      selectProfile(index);
+    });
+    deleteBtn.innerText = "Delete";
+    deleteBtn.addEventListener("click", () => {
+      deleteProfile(index);
+    });
+    actionsCell.appendChild(editBtn);
+    actionsCell.appendChild(selectBtn);
+    actionsCell.appendChild(deleteBtn);
+    tr.appendChild(name);
+    tr.appendChild(income);
+    tr.appendChild(budget);
+    tr.appendChild(country);
+    tr.appendChild(actionsCell);
+    tbody.appendChild(tr);
   });
-});
-
-// Get a reference to the navbar element
-const navbar = document.querySelector('nav');
-
-// Get the name of the selected country from the profile form
-const country = document.getElementById('country').value;
-
+}
+function selectProfile(index) {
+  const selectedProfile = profiles[index];
+  // Do something with the selected profile
+}
+function editProfile(index) {
+  const selectedProfile = profiles[index];
+  // Do something to edit the selected profile
+}
+function deleteProfile(index) {
+  profiles.splice(index, 1);
+  localStorage.setItem("Profiles", JSON.stringify(profiles));
+  renderProfiles();
+}
+renderProfiles();
