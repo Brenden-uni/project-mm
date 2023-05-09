@@ -83,6 +83,48 @@ submitButtonEl.addEventListener('click', function (event) {
   const welcomeMsgEl = document.getElementById('welcome-msg');
   welcomeMsgEl.innerHTML = `Welcome <span><b>${name}</b></span>, <br> Your income is <span><b>${income}</b></span> <br>Your budget  is <span><b>${budget}</b></span>`;
   const informationEl = document.getElementById('information');
+<<<<<<< HEAD
+=======
+});
+
+// Get the form and submit button elements
+const form = document.querySelector('#container-3 form');
+const submitButton = document.querySelector('#submitButtonEl');
+// Add an event listener to the submit button
+submitButton.addEventListener('click', function (event) {
+  // Prevent the default form submission behavior
+  event.preventDefault();
+  // Get the values from the form inputs
+  const name = document.querySelector('#nameInputEl').value;
+  const income = document.querySelector('#incomeInputEl').value;
+  const budget = document.querySelector('#budgetInputEl').value;
+  const country = document.querySelector('#country').value;
+  // Create an object to represent the form data
+  const formData = {
+    name,
+    income,
+    budget,
+    country
+  };
+  // Convert the object to a JSON string
+  const formDataJson = JSON.stringify(formData);
+  // Store the JSON string in local storage
+  localStorage.setItem('formData', formDataJson);
+  // Retrieve the time and date for the selected country
+  const apiUrl = `https://timezoneapi.io/api/timezone/?apikey=${aWwymuIZdzpBFAcEvmrJ}&zone=${country}`;
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      // Display the time and date to the user
+      const time = data.data.datetime.time_24;
+      const date = data.data.datetime.date;
+      alert(`Current time and date in ${country}: ${time}, ${date}`);
+    })
+    .catch(error => {
+      console.error('Error retrieving time and date:', error);
+      alert('Error retrieving time and date. Please try again later.');
+    });
+>>>>>>> b1352b454e84e065a6420470765d14b36a913970
 });
 
 // Get the form and submit button elements
@@ -98,6 +140,16 @@ const tbodyEl = document.querySelector('tbody');
 const subtotalEl = document.getElementById("subtotal");
 
 
+<<<<<<< HEAD
+=======
+document.addEventListener('DOMContentLoaded', function () {
+  let elems = document.querySelectorAll('.collapsible');
+  let instances = M.Collapsible.init(elems, {
+    accordion: true
+  });
+});
+
+>>>>>>> b1352b454e84e065a6420470765d14b36a913970
 // Create Function to add user input to a table
 
 function addTable(e) {
@@ -165,6 +217,7 @@ function calculateSubtotal() {
 const navbar = document.querySelector('nav');
 
 // Get the name of the selected country from the profile form
+<<<<<<< HEAD
 const country = document.getElementById('country').value;
 
 // create an empty array to store the profiles
@@ -258,3 +311,6 @@ function deleteProfile(index) {
   renderProfiles();
 }
 renderProfiles();
+=======
+const country = document.getElementById('country').value;
+>>>>>>> b1352b454e84e065a6420470765d14b36a913970
