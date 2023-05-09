@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expenses Manager</title>
+    <link rel="stylesheet" type="text/css" href="./Project1/Assets/style.css">
+</head>
+<body>
+    <header>
+            <button class="main-link" id="main-link"><h4>Expenses Manager</h4></Expenses></button>
+            <p id="dateandtime"></p>
+    </header>
+    <main>
+        <div class="container-n" id="container-n" style="display: flex;">
+            <div class="container-1">
+             <!-- <img src="/image/money1.jpg" alt="main image" class="money"> -->
+            <p><b>"Do not save what is left after spending, but spend what is left after saving."</b></p>
+            </div>
+            <div class="container-2">
+            <button id="create-btn">Create Profile</button>
+            <button id="profile-btn">Profiles list</button>
+            </div>
+        </div>
+      <div class="container-3" id="container-3" style="display: none;">
+        <form>
+          <label for="nameInputEl">Name:</label>
+          <input class="name" type="text" id="nameInputEl" name="name"><br><br>
+          <label for="incomeInputEl">Income:</label>
+          <input class="income" type="number" id="incomeInputEl" name="income"><br><br>
+          <label for="budgetInputEl">Budget:</label>
+          <input class="budget" type="number" id="budgetInputEl" name="budget"><br><br>
+          <label for="countryEl">Choose your country:</label>
+          <select id="country">
+            <option value=""></option>
+          </select>
+        <br><br>
+          <button class="submit-btn" type="button" value="Submit" id="submitButtonEl" onclick="getCountryInfo()">Submit</button>
+        </form>
+      </div>
+
+      <div id="container-4" style="display: none;">
+        <section id="welcome">
+            <p id="welcome-msg">Welcome <span>name</span>, your remaining budget is <span> money</span></p>
+        </section>
+        <p id="currency"> 
+         </p>
+            <section id="expenseTable">
+                <table class="centered highlight">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <br>
+                            <th>Category</th>
+                            <br>
+                            <th>Amount</th>
+                            <th></th>
+                            <br>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tableEl">
+                    </tbody>
+
+                </table>
+
+                <span id=subtotalSpan></span>
+
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header">Add Expenses</div>
+                        <div class="collapsible-body">
+                            <form id="formEl">
+                                <label>Date</label>
+                                <input type="date" id="dateEl">
+
+                                <Label>Category</Label>
+                                <input type="text" id="categoryEl">
+
+                                <label>Amount</label>
+                                <input type="number" step='any' id="amountEl">
+
+                                <button type="submit" id="addExpenseBtn">Add</button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+    </div>
+    <div id="container-5" style="display: none;">
+        <h2>Profile List</h2>
+        <table id="profile-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Income</th>
+                    <th>Budget</th>
+                    <th>Country</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Expenses Manager. All rights reserved.</p>
+    </footer>
+    <script src="https://restcountries.com/v2/all"></script>
+    <script src="./Project1/Assets/script.js"></script>
+</body>
+</html>
