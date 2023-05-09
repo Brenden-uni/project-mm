@@ -48,10 +48,10 @@ const dateTimeEl = document.getElementById('dateTimeEl');
 setInterval(() => {
   // create a new Date object to get the current date and time
   const now = new Date();
-  
+
   // format the date and time as a string
   const dateTimeString = now.toLocaleString();
-  
+
   // display the date and time on the page
   dateTimeEl.innerText = dateTimeString;
 }, 1000);
@@ -177,7 +177,6 @@ function calculateSubtotal() {
 //log out function
 
 document.getElementById('logout-btn').addEventListener('click', () => {
-  localStorage.removeItem('selectedProfile');
   window.location.href = './index.html';
 });
 
@@ -190,37 +189,50 @@ const container4 = document.getElementById("container-4");
 // create an empty array to store the profiles
 let profiles1 = [];
 
-// handle submit button click
+// handle form submission
 submitButtonEl.addEventListener("click", (event) => {
   // prevent the default form submission behavior
   event.preventDefault();
+
   // get the values entered by the user
   const name = nameInputEl.value.trim();
   const income = incomeInputEl.value.trim();
   const budget = budgetInputEl.value.trim();
   const country = countryEl.value;
+
   // validate the inputs
-  if (!name || !income || !budget || !country) {
-    alert("Please enter all the required fields.");
+  let isValid = true;
+
+  if (name === '' || income === '' || budget === '' || country === '') {
+    alert('Please enter all required fields.');
+    isValid = false;
     return;
   }
-  if (isNaN(income) || isNaN(budget)) {
-    alert("Please enter a valid number for income and budget.");
-    return;
+
+  // submit the form only if all inputs are valid
+  if (isValid===true) {
+    // create a new profile object
+    const profiles = {
+      name,
+      income: +income,
+      budget: +budget,
+      country,
+      expenses:"",
+    };
+
+    const profilesLocal = JSON.parse(localStorage.getItem("Profiles")) || [];
+
+    // add the profile to the array of profiles
+    console.log(profiles);
+    profilesLocal.push(profiles);
+    console.log(profilesLocal);
+
+    localStorage.setItem("Profiles", JSON.stringify(profilesLocal));
+
+    // show the main screen and hide the create profile screen
+    container3.style.display = "none";
+    document.getElementById("container-n").style.display = "none";
   }
-  // create a new profile object
-  const profiles = {
-    name,
-    income: +income,
-    budget: +budget,
-    country,
-    expenses: []
-  };
-  // add the profile to the array of profiles
-  profiles.push(profiles1);
-  // show the main screen and hide the create profile screen
-  container3.style.display = "none";
-  document.getElementById("container-n").style.display = "flex";
 });
 
 // handle profile button click
@@ -245,8 +257,5 @@ selectProfileBtns.forEach((btn, index) => {
   });
 });
 
-// Get a reference to the navbar element
 const navbar = document.querySelector('nav');
-
-// Get the name of the selected country from the profile form
 const country = document.getElementById('country').value;
