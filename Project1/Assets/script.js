@@ -154,8 +154,27 @@ function addTable(e) {
   tableEl.addEventListener('click', deleteRow);
 
   calculateSubtotal()
-
 }
+
+// function calculateSubtotal() {
+//   let subtotal = 0;
+//   let tableRows = document.querySelectorAll("#tableEl tr");
+//   for (let i = 0; i < tableRows.length; i++) {
+//     let amountCell = tableRows[i].querySelectorAll("td")[2];
+//     let amount = parseFloat(amountCell.textContent);
+//     subtotal += amount;
+//   }
+//   let budgetJson = localStorage.getItem('Profile');
+//   let budgetData = JSON.parse(budgetJson);
+//   let budget = parseFloat(budgetData.budget);
+//   let remainingBudget = budget - subtotal;
+//   let remainingBudgetEl = document.getElementById("remainingBudget");
+//   remainingBudgetEl.textContent = "Your remaining budget is " + remainingBudget.toFixed(2);
+//   let subtotalEl = document.getElementById("subtotal");
+//   subtotalEl.textContent = "Subtotal: " + subtotal.toFixed(2);
+// }
+
+calculateSubtotal();
 
 function deleteRow(e) {
   if (!e.target.classList.contains('removeBtn')) {
@@ -231,8 +250,6 @@ submitButtonEl.addEventListener("click", (event) => {
     country,
     expenses: [],
   };
-
-  console.log(profiles);
 
   const profilesLocal = JSON.parse(localStorage.getItem("Profiles")) || [];
 
@@ -347,7 +364,7 @@ function selectProfile(index) {
 
   // Get the information element
   const informationEl = document.getElementById('information');
-
+  calculateSubtotal();
   document.getElementById("container-5").style.display = "none";
 }
 
