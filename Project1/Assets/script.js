@@ -51,8 +51,6 @@ mainLink.addEventListener('click', () => {
 });
 
 
-
-
 const createButton = document.getElementById('create-btn');
 const containerMain = document.getElementById('container-n');
 const containerForm = document.getElementById('container-3');
@@ -121,18 +119,9 @@ const formEl = document.getElementById('formEl');
 const tableEl = document.querySelector('table');
 const tbodyEl = document.querySelector('tbody');
 const subtotalEl = document.getElementById("subtotal");
+const countryEl = document.getElementById('country')
 
 
-<<<<<<< HEAD
-=======
-document.addEventListener('DOMContentLoaded', function () {
-  let elems = document.querySelectorAll('.collapsible');
-  let instances = M.Collapsible.init(elems, {
-    accordion: true
-  });
-});
-
->>>>>>> b1352b454e84e065a6420470765d14b36a913970
 // Create Function to add user input to a table
 
 function addTable(e) {
@@ -152,26 +141,21 @@ function addTable(e) {
   </tr>
   `;
 
-  function deleteRow(e) {
-    if (!e.target.classList.contains('removeBtn')) {
-      return
-    }
+  const profilesLocal = JSON.parse(localStorage.getItem("Profiles")) || [];
 
-    const btn = e.target;
-    btn.closest('tr').remove();
-    calculateSubtotal()
+  // get the index of the selected profile
+  const index = localStorage.getItem("SelectedProfileIndex");
 
-  }
+  // add the expense to the selected profile
+  profilesLocal[index].expenses.push({ date, category, amount });
 
-tableEl.addEventListener('click', deleteRow);
+  // save the profiles to local storage
+  localStorage.setItem("Profiles", JSON.stringify(profilesLocal));
+
+  tableEl.addEventListener('click', deleteRow);
 
   calculateSubtotal()
-
 }
-
-//Add event when user clicks add it will add into table
-
-formEl.addEventListener("submit", addTable)
 
 //Create a function for table row to dynamically add cost of expenses 
 
@@ -214,11 +198,17 @@ function deleteRow(e) {
   localStorage.setItem("Profiles", JSON.stringify(profilesLocal));
 }
 
-const navbar = document.querySelector('nav');
+tableEl.addEventListener('click', deleteRow);
 
-// Get the name of the selected country from the profile form
-<<<<<<< HEAD
-const country = document.getElementById('country').value;
+//Add event when user clicks add it will add into table
+
+formEl.addEventListener("submit", addTable)
+
+// get the required elements
+const createBtn = document.getElementById("create-btn");
+const profileBtn = document.getElementById("profile-btn");
+const container3 = document.getElementById("container-3");
+const container4 = document.getElementById("container-4");
 
 // create an empty array to store the profiles
 let profiles1 = [];
