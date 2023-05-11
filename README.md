@@ -9,5 +9,3 @@ The Expenses Manager app is a web-based application designed to help users track
 
 ## How to use
 Create a profile adding required information, then add the details aof your expenses and it will display the total expenses.
-
-## Screenshot
