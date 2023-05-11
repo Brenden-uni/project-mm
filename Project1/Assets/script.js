@@ -45,13 +45,10 @@ function getCountryList() {
 // Call the getCountryList() function when the page is loaded
 window.onload = getCountryList;
 
-
 const mainLink = document.getElementById('main-link');
 mainLink.addEventListener('click', () => {
   location.reload();
 });
-
-
 
 
 const createButton = document.getElementById('create-btn');
@@ -67,6 +64,7 @@ profileButton.addEventListener('click', function () {
   containerMain.style.display = 'none';
   containerProfile.style.display = 'block';
 });
+
 const submitButtonEl = document.getElementById('submitButtonEl');
 submitButtonEl.addEventListener('click', getInformation);
 
@@ -111,7 +109,6 @@ submitButton.addEventListener('click', function (event) {
       console.error('Error retrieving time and date:', error);
       alert('Error retrieving time and date. Please try again later.');
     });
->>>>>>> b1352b454e84e065a6420470765d14b36a913970
 });
 
 const nameInputEl = document.getElementById('nameInputEl');
@@ -124,7 +121,7 @@ const tbodyEl = document.querySelector('tbody');
 const subtotalEl = document.getElementById("subtotal");
 const countryEl = document.getElementById('country')
 
->>>>>>> b1352b454e84e065a6420470765d14b36a913970
+
 // Create Function to add user input to a table
 
 function addTable(e) {
@@ -160,25 +157,22 @@ function addTable(e) {
   calculateSubtotal()
 }
 
-// function calculateSubtotal() {
-//   let subtotal = 0;
-//   let tableRows = document.querySelectorAll("#tableEl tr");
-//   for (let i = 0; i < tableRows.length; i++) {
-//     let amountCell = tableRows[i].querySelectorAll("td")[2];
-//     let amount = parseFloat(amountCell.textContent);
-//     subtotal += amount;
-//   }
-//   let budgetJson = localStorage.getItem('Profile');
-//   let budgetData = JSON.parse(budgetJson);
-//   let budget = parseFloat(budgetData.budget);
-//   let remainingBudget = budget - subtotal;
-//   let remainingBudgetEl = document.getElementById("remainingBudget");
-//   remainingBudgetEl.textContent = "Your remaining budget is " + remainingBudget.toFixed(2);
-//   let subtotalEl = document.getElementById("subtotal");
-//   subtotalEl.textContent = "Subtotal: " + subtotal.toFixed(2);
-// }
+//Create a function for table row to dynamically add cost of expenses 
 
-calculateSubtotal();
+function calculateSubtotal() {
+  let subtotal = 0;
+  let tableRows = document.querySelectorAll("#tableEl tr");
+
+  for (let i = 0; i < tableRows.length; i++) {
+    let amountCell = tableRows[i].querySelectorAll("td")[2];
+    let amount = parseFloat(amountCell.textContent);
+    subtotal += amount;
+  }
+
+  let subtotalSpan = document.getElementById("subtotalSpan");
+  subtotalSpan.textContent = "Subtotal: $" + subtotal.toFixed(2);
+}
+
 
 function deleteRow(e) {
   if (!e.target.classList.contains('removeBtn')) {
@@ -209,30 +203,6 @@ tableEl.addEventListener('click', deleteRow);
 //Add event when user clicks add it will add into table
 
 formEl.addEventListener("submit", addTable)
-
-//Create a function for table row to dynamically add cost of expenses 
-
-function calculateSubtotal() {
-  let subtotal = 0;
-  let tableRows = document.querySelectorAll("#tableEl tr");
-
-  for (let i = 0; i < tableRows.length; i++) {
-    let amountCell = tableRows[i].querySelectorAll("td")[2];
-    let amount = parseFloat(amountCell.textContent);
-    subtotal += amount;
-  }
-
-  let budgetJson = localStorage.getItem('formData');
-  let budgetData = JSON.parse(budgetJson);
-  let budget = parseFloat(budgetData.budget);
-  let remainingBudget = budget - subtotal;
-
-  let remainingBudgetEl = document.getElementById("remainingBudget");
-  remainingBudgetEl.textContent = "Your remaining budget is " + remainingBudget.toFixed(2);
-
-  let subtotalEl = document.getElementById("subtotal");
-  subtotalEl.textContent = "Subtotal: " + subtotal.toFixed(2);
-}
 
 // get the required elements
 const createBtn = document.getElementById("create-btn");

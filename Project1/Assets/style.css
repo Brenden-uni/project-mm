@@ -148,8 +148,6 @@ footer {
 
 .container-3 {
   background-color: white;
-.container-3 {
-  background-color: white;
   padding: 20px;
   margin-bottom: 20px;
   height: auto;
@@ -157,16 +155,12 @@ footer {
 }
 
 .container-3 label {
-.container-3 label {
   display: flex;
   font-size: 18px;
   margin-bottom: 10px;
 }
 
-input,
-.container-3 input[type="text"],
-.container-3 input[type="number"],
-.container-3 select {
+
 .container-3 select {
   background-color: #A19696;
   border: solid 2px #C5ADC5;
